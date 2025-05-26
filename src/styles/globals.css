@@ -2,11 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer base {
   :root {
-
     --background: 0 0% 100%;
 
     --foreground: 222.2 84% 4.9%;
@@ -55,10 +52,19 @@
 
     --chart-5: 27 87% 67%;
 
-    --radius: 0.5rem
+    --radius: 0.5rem;
+
+    --color-text-main: #333;
+    --color-text-sub: #999;
+    --color-bg-main: #fff;
+    --color-bg-sub: #f3f3f3;
+    --color-bg-code: #fafafa;
+    --color-border-dark: #ccc;
+    --color-border: #ddd;
+    --color-border-light: #f3f3f3;
+    --color-current: #eee;
   }
   .dark {
-
     --background: 222.2 84% 4.9%;
 
     --foreground: 210 40% 98%;
@@ -105,11 +111,9 @@
 
     --chart-4: 280 65% 60%;
 
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
-
-
 
 @layer base {
   * {

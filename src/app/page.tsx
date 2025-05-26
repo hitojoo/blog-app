@@ -1,10 +1,16 @@
-import { client } from "@/lib/microcms";
+import { getList } from "@/lib/microcms";
+import { LIMIT } from "@/constants";
+import { Pagination } from "@/components/pagination";
+import { ArticleList } from "@/components/article-list";
 
-const Home = async () => {
-  const data = await client.get({
-    endpoint: "blog",
+export default async function Page() {
+  const data = await getList({
+    limit: LIMIT,
   });
-  return <div>{data.contents[0].title}</div>;
-};
-
-export default Home;
+  return (
+    <>
+      <ArticleList articles={data.contents} />
+      <Pagination totalCount={data.totalCount} />
+    </>
+  );
+}
