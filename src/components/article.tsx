@@ -15,7 +15,7 @@ export function Article({ data }: Props) {
         <PublishedDate date={data.publishedAt || data.createdAt} />
       </div>
       <h1 className="text-4xl font-extrabold mb-8">{data.title}</h1>
-      <TagList tags={data.tags} />
+      <TagList tags={data.tags} hasLink={false} />
       <p className="text-sm text-muted-foreground">{data.description}</p>
       <div></div>
       <picture>

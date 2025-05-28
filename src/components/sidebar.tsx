@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import { TagList } from "@/components/tag-list";
 import { Profile } from "@/components/profile";
 import { SearchField } from "@/components/search-field";
-import { Search, Tag as TagIcon, UserPen } from "lucide-react";
+import { Archive, Search, Tag as TagIcon, UserPen } from "lucide-react";
 
 type TitleProps = {
   name: string;
@@ -49,6 +49,11 @@ export const Sidebar = ({ writer, tags }: SidebarProps) => {
       <div>
         <Title name="Tags" icon={<TagIcon />} />
         <TagList tags={tags} />
+      </div>
+
+      {/* アーカイブ */}
+      <div>
+        <Title name="Archives" icon={<Archive />} />
       </div>
     </div>
   );
