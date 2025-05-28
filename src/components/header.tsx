@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Header() {
+export function Header() {
   return (
     <header className="p-4 border border-b-2 bg-slate-800">
       <Link href="/">

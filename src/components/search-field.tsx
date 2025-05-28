@@ -23,12 +23,12 @@ export function SearchField() {
       type="search"
       name="q"
       ref={inputRef}
-      placeholder="Search..."
+      placeholder="記事を検索..."
       onKeyDown={_onEnter}
       onCompositionStart={startComposition}
       onCompositionEnd={endComposition}
       defaultValue={defaultQuery}
-      className="p-4 border rounded-full flex border-slate-400"
+      className="p-2 border rounded-md flex border-slate-400 text-sm w-full"
     />
   );
 }

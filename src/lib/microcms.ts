@@ -45,7 +45,7 @@ export type Blog = {
 /** 記事 */
 export type Article = Blog & MicroCMSContentId & MicroCMSDate;
 
-// ブログ一覧を取得
+/** ブログ一覧を取得 */
 export const getList = async (queries?: MicroCMSQueries) => {
   const listData = await client
     .getList<Blog>({
@@ -56,7 +56,7 @@ export const getList = async (queries?: MicroCMSQueries) => {
   return listData;
 };
 
-// ブログの詳細を取得
+/** ブログの詳細を取得 */
 export const getDetail = async (
   contentId: string,
   queries?: MicroCMSQueries
@@ -95,4 +95,16 @@ export const getTag = async (contentId: string, queries?: MicroCMSQueries) => {
     .catch(notFound);
 
   return detailData;
+};
+
+/** ライターを取得 */
+export const getWriter = async (queries?: MicroCMSQueries) => {
+  const data = await client
+    .getList<Writer>({
+      endpoint: "writers",
+      queries,
+    })
+    .catch(notFound);
+
+  return data;
 };

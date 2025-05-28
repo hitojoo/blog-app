@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
-import { getTagList } from "@/lib/microcms";
+import { getTagList, getWriter } from "@/lib/microcms";
 import { LIMIT } from "@/constants";
-import Header from "@/components/header";
-import { Navigation } from "@/components/navigation";
-import Footer from "@/components/footer";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Sidebar } from "@/components/sidebar";
+import { DynamicBreadcrumb } from "@/components/dynamic-breadcrumb";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,15 +47,19 @@ export default async function RootLayout({
   const tags = await getTagList({
     limit: LIMIT,
   });
+  const writers = await getWriter();
   return (
     <html lang="ja">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <div className="mx-auto w-[720px] min-h-[85vh]">
-          <Navigation tags={tags.contents} />
-          <main>{children}</main>
+        <div className="ml-4 my-2">
+          <DynamicBreadcrumb />
+        </div>
+        <div className="mx-auto min-h-[85vh] flex gap-12 mt-12 justify-center">
+          <main className="w-[720px]">{children}</main>
+          <Sidebar writer={writers.contents[0]} tags={tags.contents} />
         </div>
         <Footer />
       </body>

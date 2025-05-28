@@ -1,4 +1,5 @@
 import { type Writer } from "@/lib/microcms";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 type Props = {
   writer?: Writer;
@@ -9,23 +10,15 @@ export function Profile({ writer }: Props) {
     return null;
   }
   return (
-    <div>
-      <picture>
-        <source
-          type="image/webp"
-          srcSet={`${writer?.image?.url}?fm=webp&fit=crop&96&h=96 1x, ${writer?.image?.url}?fm=webp&fit=crop&w=96&h=96&dpr=2 2x`}
-        />
-        <img
-          src={writer?.image?.url}
-          alt=""
-          width={writer?.image?.width}
-          height={writer?.image?.height}
-        />
-      </picture>
-      <div>
-        <p>{writer?.name}</p>
-        <p>{writer?.profile}</p>
+    <div className="space-y-1">
+      <div className="flex items-center gap-2">
+        <Avatar>
+          <AvatarImage src={writer?.image?.url} sizes=""></AvatarImage>
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <p className="font-bold">{writer?.name}</p>
       </div>
+      <p className="text-sm text-muted-foreground">{writer?.profile}</p>
     </div>
   );
 }

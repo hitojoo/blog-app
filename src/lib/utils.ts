@@ -11,7 +11,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const formatDate = (date: string) =>
-  format(new TZDate(date, "Asia/Tokyo"), "yyyy-MM-dd hh:mm");
+  format(new TZDate(date, "Asia/Tokyo"), "yyyy-MM-dd");
 
 export const formatRichText = (richText: string) => {
   const $ = load(richText, null, false);

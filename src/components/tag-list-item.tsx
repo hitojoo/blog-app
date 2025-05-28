@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { type Tag } from "@/lib/microcms";
+import { Badge } from "@/components/ui/badge";
 
 type Props = {
   tag: Tag;
@@ -9,17 +10,10 @@ type Props = {
 export function TagListItem({ tag, hasLink = true }: Props) {
   if (hasLink) {
     return (
-      <Link
-        className="bg-slate-200 p-1 text-xs border rounded-xl hover:bg-slate-300 duration-300"
-        href={`/tags/${tag.id}`}
-      >
-        #{tag.name}
-      </Link>
+      <Badge variant="secondary" className="hover:bg-slate-300 duration-300">
+        <Link href={`/tags/${tag.id}`}>#{tag.name}</Link>
+      </Badge>
     );
   }
-  return (
-    <span className="bg-slate-200 p-1 text-xs border rounded-xl hover:bg-slate-300 duration-300">
-      #{tag.name}
-    </span>
-  );
+  return <Badge variant="secondary">#{tag.name}</Badge>;
 }
