@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { getTagList, getWriter } from "@/lib/microcms";
@@ -62,6 +63,7 @@ export default async function RootLayout({
           <Sidebar writer={writers.contents[0]} tags={tags.contents} />
         </div>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
