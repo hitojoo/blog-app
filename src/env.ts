@@ -3,15 +3,13 @@ import { z } from "zod";
 
 export const env = createEnv({
   server: {
-    NODE_ENV: z.enum(["development", "production"]),
-    ENV: z.enum(["local", "dev", "stg", "prod"]),
+    BASE_URL: z.string().url(),
     MICROCMS_API_KEY: z.string(),
     MICROCMS_SERVICE_DOMAIN: z.string(),
   },
   client: {},
   runtimeEnv: {
-    NODE_ENV: process.env.NODE_ENV,
-    ENV: process.env.ENV,
+    BASE_URL: process.env.BASE_URL,
     MICROCMS_API_KEY: process.env.MICROCMS_API_KEY,
     MICROCMS_SERVICE_DOMAIN: process.env.MICROCMS_SERVICE_DOMAIN,
   },
