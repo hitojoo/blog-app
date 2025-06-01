@@ -19,7 +19,6 @@ export function ArticleListItem({ article }: Props) {
                 type="image/webp"
                 media="(max-width: 640px)"
                 srcSet={`${article.thumbnail?.url}?fm=webp&w=414 1x, ${article.thumbnail?.url}?fm=webp&w=414&dpr=2 2x`}
-                className="w-full h-auto"
               />
               <source
                 type="image/webp"
@@ -30,7 +29,7 @@ export function ArticleListItem({ article }: Props) {
                 alt=""
                 width={article.thumbnail?.width}
                 height={article.thumbnail?.height}
-                className="h-auto w-[240px]"
+                className="h-[126px] w-[180px]"
               />
             </picture>
           ) : (
@@ -39,7 +38,7 @@ export function ArticleListItem({ article }: Props) {
               alt="No Image"
               width={1200}
               height={630}
-              className="h-auto w-[240px]"
+              className="h-[126px] w-[180px]"
             />
           )}
           <dl className="space-y-2">
@@ -52,7 +51,7 @@ export function ArticleListItem({ article }: Props) {
             <dd>
               <TagList tags={article.tags} hasLink={false} />
             </dd>
-            <dt className="text-muted-foreground text-sm">
+            <dt className="text-muted-foreground text-sm text-wrap">
               {article.description}
             </dt>
           </dl>

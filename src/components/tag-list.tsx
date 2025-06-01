@@ -11,7 +11,7 @@ export function TagList({ tags, hasLink = true }: Props) {
     return null;
   }
   return (
-    <ul className={`flex ${hasLink ? "flex-col" : "flex-wrap"} gap-2`}>
+    <ul className={`flex ${hasLink ? "md:flex-col" : "flex-wrap"} gap-2`}>
       {tags.map((tag) => (
         <li key={tag.id}>
           <TagListItem tag={tag} hasLink={hasLink} />

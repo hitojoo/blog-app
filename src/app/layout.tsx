@@ -61,7 +61,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <div className="mx-auto min-h-[85vh] flex gap-12 mt-12 justify-center">
+        <div className="mx-auto min-h-[85vh] md:flex gap-12 mt-12 justify-center">
           <main className="w-[720px]">{children}</main>
           <Sidebar
             writer={writers.contents[0]}

@@ -31,7 +31,7 @@ const Title = ({ name, icon }: TitleProps) => {
 
 export const Sidebar = ({ writer, tags, monthlyCounts }: SidebarProps) => {
   return (
-    <div className="w-[240px] space-y-12 bg-white">
+    <div className="md:w-[240px] space-y-12 bg-white p-4">
       {/* 検索 */}
       <div>
         <Title name="Search" icon={<Search />} />
