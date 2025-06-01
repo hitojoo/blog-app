@@ -12,13 +12,14 @@ export function ArticleListItem({ article }: Props) {
   return (
     <li className="list-none">
       <Link href={`/articles/${article.id}`}>
-        <div className="flex gap-8 items-center hover:bg-orange-100 p-4 rounded-lg duration-300">
+        <div className="flex gap-8 items-center p-4 border-b border-b-slate-300 pb-8 transform transition duration-300 hover:shadow-xl hover:-translate-y-2">
           {article.thumbnail ? (
             <picture>
               <source
                 type="image/webp"
                 media="(max-width: 640px)"
                 srcSet={`${article.thumbnail?.url}?fm=webp&w=414 1x, ${article.thumbnail?.url}?fm=webp&w=414&dpr=2 2x`}
+                className="w-full h-auto"
               />
               <source
                 type="image/webp"
@@ -29,7 +30,7 @@ export function ArticleListItem({ article }: Props) {
                 alt=""
                 width={article.thumbnail?.width}
                 height={article.thumbnail?.height}
-                className="h-auto w-60"
+                className="h-auto w-[240px]"
               />
             </picture>
           ) : (
@@ -38,12 +39,14 @@ export function ArticleListItem({ article }: Props) {
               alt="No Image"
               width={1200}
               height={630}
-              className="h-auto w-60"
+              className="h-auto w-[240px]"
             />
           )}
-          <dl className="w-full space-y-2">
-            <dd className="flex justify-end">
-              <PublishedDate date={article.publishedAt || article.createdAt} />
+          <dl className="space-y-2">
+            <dd>
+              <PublishedDate
+                publishedAt={article.publishedAt || article.createdAt}
+              />
             </dd>
             <dt className="text-2xl font-bold">{article.title}</dt>
             <dd>

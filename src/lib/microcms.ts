@@ -56,7 +56,24 @@ export const getList = async (queries?: MicroCMSQueries) => {
   return listData;
 };
 
-/** ブログの詳細を取得 */
+/** 月別ブログ一覧を取得 */
+export const getMonthlyArticles = (months: string[]) => {
+  return months.map(async (month) => {
+    const data = await client.getList<Article>({
+      endpoint: "blog",
+      queries: {
+        limit: 100,
+        filters: `publishedAt[begins_with]${month}`,
+      },
+    });
+    return {
+      totalCount: data.totalCount,
+      month: month,
+    };
+  });
+};
+
+/** 記事の詳細を取得 */
 export const getDetail = async (
   contentId: string,
   queries?: MicroCMSQueries

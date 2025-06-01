@@ -3,12 +3,12 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
-import { getTagList, getWriter } from "@/lib/microcms";
+import { getMonthlyArticles, getTagList, getWriter } from "@/lib/microcms";
 import { LIMIT } from "@/constants";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Sidebar } from "@/components/sidebar";
-import { DynamicBreadcrumb } from "@/components/dynamic-breadcrumb";
+import { getMonthListFromStartToDate } from "@/lib/utils";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,6 +46,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 月の配列を取得
+  const monthList = getMonthListFromStartToDate("2025-05");
+
+  /** 月別記事数 */
+  const monthlyCounts = await Promise.all(getMonthlyArticles(monthList));
   const tags = await getTagList({
     limit: LIMIT,
   });
@@ -56,12 +61,13 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <div className="ml-4 my-2">
-          <DynamicBreadcrumb />
-        </div>
         <div className="mx-auto min-h-[85vh] flex gap-12 mt-12 justify-center">
           <main className="w-[720px]">{children}</main>
-          <Sidebar writer={writers.contents[0]} tags={tags.contents} />
+          <Sidebar
+            writer={writers.contents[0]}
+            tags={tags.contents}
+            monthlyCounts={monthlyCounts}
+          />
         </div>
         <Footer />
         <SpeedInsights />

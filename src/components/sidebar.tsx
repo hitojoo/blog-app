@@ -4,6 +4,7 @@ import { TagList } from "@/components/tag-list";
 import { Profile } from "@/components/profile";
 import { SearchField } from "@/components/search-field";
 import { Archive, Search, Tag as TagIcon, UserPen } from "lucide-react";
+import { ArchiveList } from "./archive-list";
 
 type TitleProps = {
   name: string;
@@ -13,6 +14,10 @@ type TitleProps = {
 type SidebarProps = {
   writer: Writer;
   tags: Tag[];
+  monthlyCounts: {
+    totalCount: number;
+    month: string;
+  }[];
 };
 
 const Title = ({ name, icon }: TitleProps) => {
@@ -24,7 +29,7 @@ const Title = ({ name, icon }: TitleProps) => {
   );
 };
 
-export const Sidebar = ({ writer, tags }: SidebarProps) => {
+export const Sidebar = ({ writer, tags, monthlyCounts }: SidebarProps) => {
   return (
     <div className="w-[240px] space-y-12 bg-white">
       {/* 検索 */}
@@ -54,6 +59,7 @@ export const Sidebar = ({ writer, tags }: SidebarProps) => {
       {/* アーカイブ */}
       <div>
         <Title name="Archives" icon={<Archive />} />
+        <ArchiveList monthlyCounts={monthlyCounts} />
       </div>
     </div>
   );

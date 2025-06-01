@@ -1,15 +1,15 @@
-import { Clock } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 
 type Props = {
-  date: string;
+  publishedAt: string;
 };
 
-export function PublishedDate({ date }: Props) {
+export function PublishedDate({ publishedAt }: Props) {
   return (
-    <span className="flex gap-2 text-muted-foreground text-sm items-center">
-      <Clock size={20} />
-      {formatDate(date)}
-    </span>
+    <div className="flex gap-4">
+      <span className="flex gap-2 text-muted-foreground text-xs items-center">
+        {formatDate(publishedAt)}
+      </span>
+    </div>
   );
 }

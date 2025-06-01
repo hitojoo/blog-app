@@ -17,7 +17,7 @@ export default async function TagsLayout(props: Props) {
   const tag = await getTag(tagId);
   return (
     <div>
-      <p className="mb-2">
+      <p className="mb-2 font-bold">
         <TagListItem tag={tag} hasLink={false} />
         の記事一覧
       </p>

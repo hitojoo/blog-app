@@ -12,7 +12,7 @@ export function Article({ data }: Props) {
   return (
     <main className="space-y-4">
       <div className="flex justify-end">
-        <PublishedDate date={data.publishedAt || data.createdAt} />
+        <PublishedDate publishedAt={data.publishedAt || data.createdAt} />
       </div>
       <h1 className="text-4xl font-extrabold mb-8">{data.title}</h1>
       <TagList tags={data.tags} hasLink={false} />
