@@ -62,7 +62,7 @@ export default async function RootLayout({
       >
         <Header />
         <div className="mx-auto min-h-[85vh] md:flex gap-12 mt-12 justify-center">
-          <main className="w-[720px]">{children}</main>
+          <main className="md:w-[720px]">{children}</main>
           <Sidebar
             writer={writers.contents[0]}
             tags={tags.contents}
