@@ -10,7 +10,7 @@ type Props = {
 
 export function Article({ data }: Props) {
   return (
-    <main className="space-y-4">
+    <main className="space-y-4 p-4">
       <div className="flex justify-end">
         <PublishedDate publishedAt={data.publishedAt || data.createdAt} />
       </div>
